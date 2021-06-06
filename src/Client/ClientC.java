@@ -15,8 +15,9 @@ public class ClientC {
         PrintWriter writer = null;
         BufferedReader reader = null;
 
-        try{
-            //IPアドレスとポート番号を指定してクライアント側のソケットを作成
+        try {
+
+            //サーバのIPアドレスとポート番号を指定してクライアント側のソケットを作成
             cSocket = new Socket(serverIP, 8765);
 
             //クライアント側での入力用
@@ -50,12 +51,13 @@ public class ClientC {
                 }
 
                 //サーバ側からの受取の結果を表示
-                System.out.println
-                        ("サーバーからの回答：" + reader.readLine());
+                System.out.println("サーバーからの回答：" + reader.readLine());
             }
-        }catch(Exception e){
+
+
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             try {
                 if (reader != null) {
                     reader.close();
