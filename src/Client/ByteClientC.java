@@ -31,6 +31,9 @@ public class ByteClientC {
             }
 
 
+            //FileInputStream fileInputStream = new java.io.FileInputStream("C:\\works\\IntellijWork\\SocketSample\\src\\Client\\a.png");
+            //System.out.println(fileInputStream.readAllBytes().length);
+            //os.write(fileInputStream.readAllBytes());
             os.write(data);//接続相手にバイト出力
             os.flush();//未出力データを、残らず出す。
 
