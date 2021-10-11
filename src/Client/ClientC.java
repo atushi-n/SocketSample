@@ -8,7 +8,11 @@ import java.net.Socket;
 
 public class ClientC {
 
-    public void run(String serverIP) {
+    public ClientC(){
+
+    }
+
+    public void run(String serverIP, int port) {
 
         Socket cSocket = null;
         BufferedReader csInput = null;
@@ -18,7 +22,7 @@ public class ClientC {
         try {
 
             //サーバのIPアドレスとポート番号を指定してクライアント側のソケットを作成
-            cSocket = new Socket(serverIP, 8765);
+            cSocket = new Socket(serverIP, port);
 
             //クライアント側での入力用
             csInput = new BufferedReader

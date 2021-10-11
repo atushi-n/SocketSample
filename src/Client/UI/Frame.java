@@ -34,7 +34,7 @@ public class Frame extends JFrame implements ActionListener {
         switch (e.getActionCommand()){
             case "通信開始":
                 ClientC clientC = new ClientC();
-                clientC.run(ipTextField.getText());
+                clientC.run(ipTextField.getText(), 8765);
         }
     }
 }
