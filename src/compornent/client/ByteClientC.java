@@ -1,4 +1,4 @@
-package Client;
+package compornent.client;
 
 import java.io.*;
 import java.net.Socket;
@@ -31,7 +31,7 @@ public class ByteClientC {
             }
 
 
-            //FileInputStream fileInputStream = new java.io.FileInputStream("C:\\works\\IntellijWork\\SocketSample\\src\\Client\\a.png");
+            //FileInputStream fileInputStream = new java.io.FileInputStream("C:\\works\\IntellijWork\\SocketSample\\src\\compornent.Client\\a.png");
             //System.out.println(fileInputStream.readAllBytes().length);
             //os.write(fileInputStream.readAllBytes());
             os.write(data);//接続相手にバイト出力
