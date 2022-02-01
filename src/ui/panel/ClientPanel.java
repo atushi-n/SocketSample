@@ -55,7 +55,7 @@ public class ClientPanel extends JPanel implements ActionListener {
 
 
         backButton.setFont(new Font("MSゴシック", Font.BOLD, 20));
-        backButton.addActionListener(this);
+        connectButton.addActionListener(this);
         sendButton.addActionListener(this);
     }
 
