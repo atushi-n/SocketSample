@@ -14,25 +14,25 @@ import java.net.Socket;
  */
 public class ServerC {
 
-    PrintWriter writer;
-    public ServerC(){
 
-    }
+    private ServerSocket sSocket;
+    private Socket socket;
 
-    public void write(String text){
-        writer.write(text);
-    }
-    public void serverDstart() {
+    private BufferedReader reader;
+    private PrintWriter writer;
 
-        ServerSocket sSocket = null;
-        Socket socket = null;
-        BufferedReader reader = null;
+    public ServerC() {
 
-        try{
+
+        sSocket = null;
+        socket = null;
+        reader = null;
+
+        try {
             //IPアドレスとポート番号を指定してサーバー側のソケットを作成
             sSocket = new ServerSocket();
             sSocket.bind(new InetSocketAddress
-                    (InetAddress.getLocalHost().getHostAddress(),8765));
+                    ("192.168.11.9", 8765));
 
             System.out.println("クライアントからの入力待ち状態");
 
@@ -49,47 +49,28 @@ public class ServerC {
                     socket.getOutputStream(), true);
 
             //無限ループ　byeの入力でループを抜ける
-            String line = null;
-            int num;
+            String line;
             while (true) {
-
+                System.out.println("ss");
+                //ソケットのインプットストリームに入力されたら読まれる
                 line = reader.readLine();
 
-                if (line.equals("bye")) {
-                    break;
-                }
-
-                try {
-                    num = Integer.parseInt(line);
-
-                    if (num % 2 == 0) {
-                        //送信用の文字を送信
-                        writer.println("OK");
-                    } else {
-                        //送信用の文字を送信
-                        writer.println("NG");
-                    }
-                } catch (NumberFormatException e) {
-                    //送信用の文字を送信
-                    writer.println("数値を入力して下さい");
-                }
-
-                System.out.println("クライアントで入力された文字＝" + line);
+                writer.println("<<<" + line + ">>>");
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally{
-            try{
-                if (reader!=null){
+        } finally {
+            try {
+                if (reader != null) {
                     reader.close();
                 }
-                if (writer!=null){
+                if (writer != null) {
                     writer.close();
                 }
-                if (socket!=null){
+                if (socket != null) {
                     socket.close();
                 }
-                if (sSocket!=null){
+                if (sSocket != null) {
                     sSocket.close();
                 }
                 System.out.println("サーバー側終了です");
@@ -98,4 +79,8 @@ public class ServerC {
             }
         }
     }
+
+
+
+
 }

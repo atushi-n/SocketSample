@@ -22,9 +22,12 @@ public class ServerPanel extends JPanel implements ActionListener {
     private JButton sendButton;
     private JButton listenButton;
     private JButton backButton;
-    public ServerPanel(Frame frame){
+
+    public ServerPanel(Frame frame) {
         super();
+
         this.frame = frame;
+
         BoxLayout boxLayout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
         this.setLayout(boxLayout);
         GridBagLayout gbLayout = new GridBagLayout();
@@ -57,18 +60,16 @@ public class ServerPanel extends JPanel implements ActionListener {
                 break;
 
             case listenButtonName:
-                 serverC = new ServerC();
 
-                 new Thread(new Runnable() {
-                     @Override
-                     public void run() {
-                         serverC.serverDstart();
-                     }
-                 }).start();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        serverC = new ServerC();
+                    }
+                }).start();
 
                 break;
-            case sendButtonName:
-                serverC.write(textField.getText());
+
         }
     }
 
