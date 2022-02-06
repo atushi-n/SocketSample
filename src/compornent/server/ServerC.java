@@ -55,7 +55,11 @@ public class ServerC {
                 //ソケットのインプットストリームに入力されたら読まれる
                 line = reader.readLine();
 
+                System.out.println(line);
+
                 writer.println("<<<" + line + ">>>");
+                System.out.println("aa");
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,8 +83,6 @@ public class ServerC {
             }
         }
     }
-
-
 
 
 }

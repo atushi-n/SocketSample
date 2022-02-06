@@ -74,33 +74,14 @@ public class ClientPanel extends JPanel implements ActionListener {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            byteClientC.run(ipField.getText(), Integer.parseInt(portField.getText()));
-                        } catch (IOException ex) {
-                            ex.printStackTrace();
-                        }
+                        byteClientC.run(ipField.getText(), Integer.parseInt(portField.getText()));
                     }
                 }).start();
+                break;
 
             case sendButtonName:
-                //１行の keyStr文字列送信
-                byte[] data = new byte[0];//バイト列に変換
-                try {
-                    data = textField.getText().getBytes("UTF-8");
-                } catch (UnsupportedEncodingException ex) {
-                    ex.printStackTrace();
-                }
-                System.out.println(Arrays.toString(data));
-
-                //FileInputStream fileInputStream = new java.io.FileInputStream("C:\\works\\IntellijWork\\SocketSample\\src\\compornent.Client\\a.png");
-                //System.out.println(fileInputStream.readAllBytes().length);
-                //os.write(fileInputStream.readAllBytes());
-                try {
-                    byteClientC.os.write(data);//接続相手にバイト出力
-                    byteClientC.os.flush();//未出力データを、残らず出す。
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+                byteClientC.send(textField.getText());
+                break;
 
         }
     }
